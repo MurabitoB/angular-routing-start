@@ -16,10 +16,12 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }, // localhost:4200
   { path: 'users', component: UsersComponent }, // localhost:4200/users
-  { path: 'users/:id/:name', component: UserComponent}, // localhost:4200/users
-  { path: 'servers', component: ServersComponent }, // localhost:4200/servers
-  { path: 'servers/:id/edit', component: EditServerComponent}, // localhost:4200/servers
-
+  { path: 'users/:id/:name', component: UserComponent }, // localhost:4200/users
+  {
+    path: 'servers', component: ServersComponent, children: [
+    { path: ':id', component: ServerComponent }, // localhost:4200/servers
+    { path: ':id/edit', component: EditServerComponent}, // localhost:4200/servers
+  ] }, // localhost:4200/servers
 ];
 
 @NgModule({
